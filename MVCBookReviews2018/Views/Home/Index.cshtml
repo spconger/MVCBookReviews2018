@@ -1,4 +1,6 @@
-﻿@{
+﻿@model IEnumerable<MVCBookReviews2018.Models.Book>
+    <!--add a reference to the model for book-->
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -6,7 +8,23 @@
     <h1>Book Reviews</h1>
    
 </div>
-
+<!--I removed all the default content and am adding a table
+    the DisplayNameFor gets the column names
+    the DisplayFor gets the data. We put it in a for each loop-->
 <div class="row">
-    
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.BookTitle)</th>
+            <th>@Html.DisplayNameFor(model => model.BookISBN)</th>
+            <th>@Html.DisplayNameFor(model => model.BookEntryDate)</th>
+        </tr>
+        @foreach(var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(model => item.BookTitle)</td>
+            <td>@Html.DisplayFor(model => item.BookISBN)</td>
+            <td>@Html.DisplayFor(model => item.BookEntryDate)</td>
+        </tr>
+        }
+    </table>
 </div>

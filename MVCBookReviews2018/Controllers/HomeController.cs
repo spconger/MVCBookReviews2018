@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using MVCBookReviews2018.Models; //add ref to Models
 
 namespace MVCBookReviews2018.Controllers
 {
@@ -10,7 +11,10 @@ namespace MVCBookReviews2018.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            // add ref to Entities
+            BookReviewDbEntities db = new BookReviewDbEntities();
+            //return books as a list
+            return View(db.Books.ToList());
         }
 
         public ActionResult About()
