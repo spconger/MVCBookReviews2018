@@ -1,0 +1,30 @@
+﻿@model IEnumerable<MVCBookReviews2018.Models.Reviewer>
+@{
+    ViewBag.Title = "Index";
+}
+<!--again, this is not a necessary part for the assignment,
+    but it will let us see if our registration works.
+    This should all look familiar from the last assignment-->
+<h2>Index</h2>
+<div class="row">
+    <p>@Html.ActionLink("Register", "Register")</p>
+    <table class="table">
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.ReviewerFirstName)</th>
+            <th>@Html.DisplayNameFor(model => model.ReviewerLastName)</th>
+            <th>@Html.DisplayNameFor(model => model.ReviewerEmail)</th>
+            <th>@Html.DisplayNameFor(model => model.ReviewerUserName)</th>
+            <th>@Html.DisplayNameFor(model => model.ReviewerDateEntered)</th>
+        </tr>
+        @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(model => item.ReviewerFirstName)</td>
+            <td>@Html.DisplayFor(model => item.ReviewerLastName)</td>
+            <td>@Html.DisplayFor(model => item.ReviewerEmail)</td>
+            <td>@Html.DisplayFor(model => item.ReviewerUserName)</td>
+            <td>@Html.DisplayFor(model => item.ReviewerDateEntered)</td>
+        </tr>
+}
+    </table>
+</div>
