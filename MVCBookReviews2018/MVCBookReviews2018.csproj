@@ -153,6 +153,7 @@
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\NewBookController.cs" />
     <Compile Include="Controllers\ReviewerController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -186,6 +187,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\NewBookClass.cs" />
     <Compile Include="Models\Review.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -260,6 +262,8 @@
     <Content Include="Views\Reviewer\Register.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Login\Result.cshtml" />
+    <Content Include="Views\NewBook\Index.cshtml" />
+    <Content Include="Views\NewBook\Result.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
