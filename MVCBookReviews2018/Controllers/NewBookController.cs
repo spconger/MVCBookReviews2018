@@ -22,6 +22,16 @@ namespace MVCBookReviews2018.Controllers
         //with the form for the new book
         public ActionResult Index()
         {
+            //we check for the session key to see if they are logged in
+            //for the donate assignment you can also get their 
+            //person key from the session for the donation
+            //  int pKey=(int)Session["personKey]
+            //using whatever you named your session in login
+            if (Session["userKey"] == null)
+            {
+                Message m = new Message("You must be logged in to enter new books");
+                return RedirectToAction("Result", m);
+            }
             return View();
         }
 

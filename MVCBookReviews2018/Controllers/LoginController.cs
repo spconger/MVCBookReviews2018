@@ -40,7 +40,7 @@ namespace MVCBookReviews2018.Controllers
                 Session["userKey"] = key;
 
                 //create a message class and pass the string to the result view
-                Message msg = new Message("Welcome, " + lc.UserName + ". You can now Donate or apply for a grant.");
+                Message msg = new Message("Welcome, " + lc.UserName + ". You can now add and review books.");
                 return RedirectToAction("Result", msg);
                            
             }
