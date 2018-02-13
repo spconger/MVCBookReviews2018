@@ -35,6 +35,10 @@ namespace MVCBookReviews2018.Controllers
             return View();
         }
 
+        /* ********************************************************
+         * commenting out the simpler version to replace it with 
+        the classroom version
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index([Bind(Include ="Title, ISBN, Author")]NewBookClass nb)
@@ -58,6 +62,34 @@ namespace MVCBookReviews2018.Controllers
 
             Message m = new Message("Book added");
             return RedirectToAction("Result", m);
+        }
+        *************************************************/
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Index([Bind(Include = "Title, ISBN, Author")]NewBookClass nb)
+        {
+            BookReviewDbEntities db = new BookReviewDbEntities();
+            Author a = new Author();
+            a.AuthorName = nb.Author;
+            db.Authors.Add(a);
+            db.SaveChanges();
+            // for donation get userkey from the session
+            Book b = new Book();
+            b.BookTitle = nb.Title;
+            b.BookISBN = nb.ISBN;
+            b.BookEntryDate = DateTime.Now;
+            Author author = db.Authors.FirstOrDefault
+                (x => x.AuthorName == nb.Author);
+            b.Authors.Add(author);
+
+            db.Books.Add(b);
+            db.SaveChanges();
+
+            Message m = new Message();
+            m.MessageText = "Thank you, the book has been added";
+
+            return View("Result", m);
         }
 
         public ActionResult Result(Message m)
